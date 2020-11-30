@@ -1,0 +1,322 @@
+<template>
+  <div class="content ht-100v pd-0">
+    <div class="content-header">
+      <div class="d-sm-flex align-items-center justify-content-between">
+        <div>
+          <nav aria-label="breadcrumb">
+            <ol
+              class="breadcrumb breadcrumb-style1"
+              style="margin-bottom: 0px;"
+            >
+              <li class="breadcrumb-item"><a href="#">기술지원현황</a></li>
+              <li class="breadcrumb-item active" aria-current="page">보드</li>
+            </ol>
+          </nav>
+          <h4 class="mg-b-0 tx-spacing--1">보드</h4>
+        </div>
+      </div>
+    </div>
+    <div class="content-body">
+      <div class="container pd-x-0">
+        <div class="row flex-row flex-sm-nowrap py-3">
+          <div class="col-sm-6 col-md-4 col-xl-3">
+            <div class="card bg-light">
+              <div class="flex justify-center">
+                <div class="min-h-screen flex overflow-x-scroll py-12">
+                  <div
+                    v-for="column in columns"
+                    :key="column.title"
+                    class="bg-gray-100 rounded-lg px-3 py-3 column-width rounded mr-4"
+                    style="width:100%"
+                  >
+                    <p
+                      class="text-gray-700 font-semibold font-sans tracking-wide text-sm"
+                    >
+                      {{ column.title }}
+                    </p>
+                    <!-- Draggable component comes from vuedraggable. It provides drag & drop functionality -->
+                    <draggable
+                      :list="column.tasks"
+                      :animation="200"
+                      ghost-class="ghost-card"
+                      group="tasks"
+                    >
+                      <!-- Each element from here will be draggable and animated. Note :key is very important here to be unique both for draggable and animations to be smooth & consistent. -->
+                      <task-card
+                        v-for="task in column.tasks"
+                        :key="task.id"
+                        :task="task"
+                        class="mt-3 cursor-move"
+                      ></task-card>
+                      <!-- </transition-group> -->
+                    </draggable>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-xl-3">
+            <div class="card bg-light">
+              <div class="flex justify-center">
+                <div class="min-h-screen flex overflow-x-scroll py-12">
+                  <div
+                    v-for="column in columns"
+                    :key="column.title"
+                    class="bg-gray-100 rounded-lg px-3 py-3 column-width rounded mr-4"
+                    style="width:100%"
+                  >
+                    <p
+                      class="text-gray-700 font-semibold font-sans tracking-wide text-sm"
+                    >
+                      {{ column.title }}
+                    </p>
+                    <!-- Draggable component comes from vuedraggable. It provides drag & drop functionality -->
+                    <draggable
+                      :list="column.tasks"
+                      :animation="200"
+                      ghost-class="ghost-card"
+                      group="tasks"
+                    >
+                      <!-- Each element from here will be draggable and animated. Note :key is very important here to be unique both for draggable and animations to be smooth & consistent. -->
+                      <task-card
+                        v-for="task in column.tasks"
+                        :key="task.id"
+                        :task="task"
+                        class="mt-3 cursor-move"
+                      ></task-card>
+                      <!-- </transition-group> -->
+                    </draggable>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-xl-3">
+            <div class="card bg-light">
+              <div class="flex justify-center">
+                <div class="min-h-screen flex overflow-x-scroll py-12">
+                  <div
+                    v-for="column in columns"
+                    :key="column.title"
+                    class="bg-gray-100 rounded-lg px-3 py-3 column-width rounded mr-4"
+                    style="width:100%"
+                  >
+                    <p
+                      class="text-gray-700 font-semibold font-sans tracking-wide text-sm"
+                    >
+                      {{ column.title }}
+                    </p>
+                    <!-- Draggable component comes from vuedraggable. It provides drag & drop functionality -->
+                    <draggable
+                      :list="column.tasks"
+                      :animation="200"
+                      ghost-class="ghost-card"
+                      group="tasks"
+                    >
+                      <!-- Each element from here will be draggable and animated. Note :key is very important here to be unique both for draggable and animations to be smooth & consistent. -->
+                      <task-card
+                        v-for="task in column.tasks"
+                        :key="task.id"
+                        :task="task"
+                        class="mt-3 cursor-move"
+                      ></task-card>
+                      <!-- </transition-group> -->
+                    </draggable>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-xl-3">
+            <div class="card bg-light">
+              <div class="flex justify-center">
+                <div class="min-h-screen flex overflow-x-scroll py-12">
+                  <div
+                    v-for="column in columns"
+                    :key="column.title"
+                    class="bg-gray-100 rounded-lg px-3 py-3 column-width rounded mr-4"
+                    style="width:100%"
+                  >
+                    <p
+                      class="text-gray-700 font-semibold font-sans tracking-wide text-sm"
+                    >
+                      {{ column.title }}
+                    </p>
+                    <!-- Draggable component comes from vuedraggable. It provides drag & drop functionality -->
+                    <draggable
+                      :list="column.tasks"
+                      :animation="200"
+                      ghost-class="ghost-card"
+                      group="tasks"
+                    >
+                      <!-- Each element from here will be draggable and animated. Note :key is very important here to be unique both for draggable and animations to be smooth & consistent. -->
+                      <task-card
+                        v-for="task in column.tasks"
+                        :key="task.id"
+                        :task="task"
+                        class="mt-3 cursor-move"
+                      ></task-card>
+                      <!-- </transition-group> -->
+                    </draggable>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import draggable from "vuedraggable";
+import TaskCard from "@/components/taskcard.vue";
+export default {
+  name: "App",
+  components: {
+    TaskCard,
+    draggable,
+  },
+  data() {
+    return {
+      columns: [
+        {
+          title: "Backlog",
+          tasks: [
+            {
+              id: 1,
+              title: "Add discount code to checkout page",
+              date: "Sep 14",
+              type: "Feature Request",
+            },
+            {
+              id: 2,
+              title: "Provide documentation on integrations",
+              date: "Sep 12",
+            },
+            {
+              id: 3,
+              title: "Design shopping cart dropdown",
+              date: "Sep 9",
+              type: "Design",
+            },
+            {
+              id: 4,
+              title: "Add discount code to checkout page",
+              date: "Sep 14",
+              type: "Feature Request",
+            },
+            {
+              id: 5,
+              title: "Test checkout flow",
+              date: "Sep 15",
+              type: "QA",
+            },
+          ],
+        },
+        {
+          title: "In Progress",
+          tasks: [
+            {
+              id: 6,
+              title: "Design shopping cart dropdown",
+              date: "Sep 9",
+              type: "Design",
+            },
+            {
+              id: 7,
+              title: "Add discount code to checkout page",
+              date: "Sep 14",
+              type: "Feature Request",
+            },
+            {
+              id: 8,
+              title: "Provide documentation on integrations",
+              date: "Sep 12",
+              type: "Backend",
+            },
+          ],
+        },
+        {
+          title: "Review",
+          tasks: [
+            {
+              id: 9,
+              title: "Provide documentation on integrations",
+              date: "Sep 12",
+            },
+            {
+              id: 10,
+              title: "Design shopping cart dropdown",
+              date: "Sep 9",
+              type: "Design",
+            },
+            {
+              id: 11,
+              title: "Add discount code to checkout page",
+              date: "Sep 14",
+              type: "Feature Request",
+            },
+            {
+              id: 12,
+              title: "Design shopping cart dropdown",
+              date: "Sep 9",
+              type: "Design",
+            },
+            {
+              id: 13,
+              title: "Add discount code to checkout page",
+              date: "Sep 14",
+              type: "Feature Request",
+            },
+          ],
+        },
+        {
+          title: "Done",
+          tasks: [
+            {
+              id: 14,
+              title: "Add discount code to checkout page",
+              date: "Sep 14",
+              type: "Feature Request",
+            },
+            {
+              id: 15,
+              title: "Design shopping cart dropdown",
+              date: "Sep 9",
+              type: "Design",
+            },
+            {
+              id: 16,
+              title: "Add discount code to checkout page",
+              date: "Sep 14",
+              type: "Feature Request",
+            },
+          ],
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+.card {
+  border: 1px solid rgb(225 229 237);
+}
+.column-width {
+  min-width: 320px;
+  width: 320px;
+}
+/* Unfortunately @apply cannot be setup in codesandbox, 
+but you'd use "@apply border opacity-50 border-blue-500 bg-gray-200" here */
+.ghost-card {
+  opacity: 0.5;
+  background: #f7fafc;
+  border: 1px solid #4299e1;
+}
+</style>
