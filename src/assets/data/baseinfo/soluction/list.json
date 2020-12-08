@@ -1,0 +1,23 @@
+[
+  {
+    "productId": "1",
+    "productNm": "SDQ",
+    "imgPath":"http://www.b2en.com/img/img-SDQ.jpg",
+    "introduce": "Smart Data Quality",
+    "detailIntroduce": "SDQ는 체계적인 전사 데이터 품질 관리 프로세스를 구축하여 데이터 품질 제고 및 안정성의 확보로 전사 차원의 업무 효율성 향상에 기여합니다. [Smart] 데이터 표준(단어, 용어, 도메인) 관리를 통한 DA(Data Architecture) 업무를 지원합니다. [Data] 누구나 쉽게 사용 가능한 가벼운 구조의 설계로 데이터 품질 관리 프로세스를 빠르고 안정적으로 수행합니다. [Quality] 데이터 품질 진단 및 개선을 수행하는데 있어 품질진단 대상에 대한 자동화된 진단 수행 및 결과를 분석합니다."
+  },
+  {
+    "productId": "2",
+    "productNm": "SMETA",
+    "imgPath":"http://www.b2en.com/img/img-SMETA.jpg",
+    "introduce": "Smart Metadata",
+    "detailIntroduce": "비투엔의 다양한 공공데이터 개방 경험과 기술력이 집약된 SMETA는 전사데이터의 메타정보를 통합관리하는 솔루션입니다. SMETA는 데이터 표준, 데이터 구조, 데이터 변경 영향 등에 대한 정보를 제공하여 기관이 보유하고 있는 데이터의 일관성을 보장하며 데이터 구조에 대한 품질 기반 마련 및 데이터 접근성 향상 등 데이터 자산에 대한 놀라운 투명성을 제공합니다."
+  },
+  {
+    "productId": "3",
+    "productNm": "SFLOW",
+    "imgPath":"http://www.b2en.com/img/img-SFLOW.jpg",
+    "introduce": "Smart Data Integration",
+    "detailIntroduce": "비투엔의 데이터처리 기술과 노하우를 집약시킨 SFLOW는 데이터 수집 및 통합을 위한 솔루션으로 기업 내/외부의 다양한 유형의 데이터를 쉽고 빠르게 수집하고, 업무시스템 및 데이터 분석시스템에 제공함으로써 데이터 중심의 비즈니스 기틀을 제공합니다."
+  }
+]

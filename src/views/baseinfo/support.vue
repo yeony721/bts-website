@@ -57,155 +57,18 @@
             <div class="tab-content">
               <div id="tabContact" class="tab-pane fade active show">
                 <div class="pd-y-20 pd-x-10 contact-list">
-                  <div class="media active">
-                    <div class="avatar avatar-sm avatar-online">
-                      <span class="avatar-initial rounded-circle bg-gray-700"
-                        >A</span
-                      >
-                    </div>
-                    <div class="media-body mg-l-10">
-                      <h6 class="tx-13 mg-b-3">관세청</h6>
-                      <span class="tx-12">2020.11.09</span>
-                    </div>
-                    <!-- media-body -->
-                    <nav>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-star"
-                        >
-                          <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                          ></polygon></svg
-                      ></a>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-edit-2"
-                        >
-                          <polygon
-                            points="16 3 21 8 8 21 3 21 3 16 16 3"
-                          ></polygon></svg
-                      ></a>
-                    </nav>
-                  </div>
                   <!-- media -->
-
-                  <div class="media">
-                    <div class="avatar avatar-sm avatar-online">
-                      <span class="avatar-initial rounded-circle bg-primary"
-                        >a</span
-                      >
-                    </div>
-                    <div class="media-body mg-l-10">
-                      <h6 class="tx-13 mg-b-3">지역난방공사</h6>
-                      <span class="tx-12">2020.10.02</span>
-                    </div>
-                    <!-- media-body -->
-                    <nav>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-star"
-                        >
-                          <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                          ></polygon></svg
-                      ></a>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-edit-2"
-                        >
-                          <polygon
-                            points="16 3 21 8 8 21 3 21 3 16 16 3"
-                          ></polygon></svg
-                      ></a>
-                    </nav>
-                  </div>
-                  <!-- media -->
-
-                  <div class="media">
-                    <div class="avatar avatar-sm avatar-online">
-                      <span class="avatar-initial rounded-circle bg-gray-700"
-                        >E</span
-                      >
-                    </div>
-                    <div class="media-body mg-l-10">
-                      <h6 class="tx-13 mg-b-3">방사청</h6>
-                      <span class="tx-12">2020.09.03</span>
-                    </div>
-                    <!-- media-body -->
-                    <nav>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-star"
-                        >
-                          <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                          ></polygon></svg
-                      ></a>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-edit-2"
-                        >
-                          <polygon
-                            points="16 3 21 8 8 21 3 21 3 16 16 3"
-                          ></polygon></svg
-                      ></a>
-                    </nav>
-                  </div>
-                  <!-- media -->
+                   <div class="media"   v-for="(item, i) in siteInfoList"    v-bind:key="i">
+                  <div class="avatar avatar-sm avatar-online"><span class="avatar-initial rounded-circle bg-gray-700">{{ (item.siteNm).charAt(0) }}</span></div>
+                  <div class="media-body mg-l-10">
+                    <h6 class="tx-13 mg-b-3">{{ item.siteNm }}</h6>
+                    <span class="tx-12">+1-234-567-890</span>
+                  </div><!-- media-body -->
+                  <nav>
+                    <a href=""><i data-feather="star"></i></a>
+                    <a href=""><i data-feather="edit-2"></i></a>
+                  </nav>
+                </div><!-- media -->
                 </div>
                 <!-- contact-list -->
               </div>
@@ -606,7 +469,7 @@
                         <polygon
                           points="16 3 21 8 8 21 3 21 3 16 16 3"
                         ></polygon></svg
-                      ><span class="d-none d-sm-inline mg-l-5"> Edit</span></a
+                      ><span class="d-none d-sm-inline mg-l-5"> 수정</span></a
                     >
                     <a
                       href="#modalDeleteContact"
@@ -628,7 +491,9 @@
                         <path
                           d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
                         ></path></svg
-                      ><span class="d-none d-sm-inline mg-l-5"> Delete</span></a
+                      ><span class="d-none d-sm-inline mg-l-5"
+                        >다운로드</span
+                      ></a
                     >
                   </div>
                 </div>
@@ -842,7 +707,6 @@
                 <div
                   class="d-flex align-items-center justify-content-between mg-b-30"
                 >
-                  <h6 class="tx-15 mg-b-0">Call &amp; Message Logs</h6>
                   <a
                     href="#"
                     class="btn btn-sm btn-white d-flex align-items-center"
@@ -876,7 +740,33 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      siteInfoList:Array
+    };
+  },
+  mounted() {
+    /*
+  const contactSidebar = new PerfectScrollbar('.contact-sidebar-body', {
+    suppressScrollX: true
+  });
+
+  new PerfectScrollbar('.contact-content-body', {
+    suppressScrollX: true
+  });
+
+  new PerfectScrollbar('.contact-content-sidebar', {
+    suppressScrollX: true
+  });
+  */
+    this.$http
+      .get("/src/assets/data/baseinfo/customer/list.json")
+      .then((response) => {
+        this.siteInfoList = response.data;
+      });
+  },
+};
 </script>
 
 <style scoped>

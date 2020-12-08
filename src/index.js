@@ -1,29 +1,57 @@
+import "../src/assets/css/base.css";
 import axios from "axios";
 import moment from "moment";
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Aside from "./views/aside.vue";
-import Dashboard from "./views/dashboard/dashboard.vue";
-import Support from "./views/baseinfo/support.vue";
-import Project from "./views/baseinfo/project.vue";
-import Soluction from "./views/baseinfo/soluction.vue";
-import History from "./views/support/history.vue";
-import Board from "./views/support/board.vue";
+import Aside from "@/components/aside.vue";
+import DashboardView from "@/views/dashboard/dashboard.vue";
+import SolutionView from "@/views/baseinfo/solution.vue";
+import CustomerView from "@/views/baseinfo/customer.vue";
+import ProjectView from "@/views/baseinfo/project.vue";
+import SupportView from "@/views/baseinfo/support.vue";
+import HistoryView from "@/views/support/history.vue";
+import BoardView from "@/views/support/board.vue";
+import Calendar from "@/views/schedule/calendar.vue";
+
+axios.defaults.baseURL = "http://127.0.0.1:18082";
+axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded";
 
 Vue.use(VueRouter);
 Vue.prototype.$http = axios;
 
+const router = new VueRouter({
+  linkActiveClass: "active",
+  routes: [
+    { path: "/", component: DashboardView },
+    { path: "/solution", component: SolutionView },
+    { path: "/customer", component: CustomerView },
+    { path: "/project", component: ProjectView },
+    { path: "/support", component: SupportView },
+    { path: "/board", component: BoardView },
+    { path: "/history", component: HistoryView },
+    { path: "/calendar", component: Calendar },
+  ],
+  beforeRouteEnter(to, from, next) {
+    let item = document.querySelectorAll(".nav-item");
+    for (let el of item) {
+      el.classList.remove("active");
+    }
+    // 이 컴포넌트를 렌더링하는 라우트 앞에 호출됩니다.
+    // 이 가드가 호출 될 때 아직 생성되지 않았기 때문에
+    // `this` 컴포넌트 인스턴스에 접근 할 수 없습니다!
+  },
+  beforeRouteLeave(to, from, next) {
+    // 이 컴포넌트를 렌더링하는 라우트가 이전으로 네비게이션 될 때 호출됩니다.
+    // `this` 컴포넌트 인스턴스에 접근 할 수 있습니다.
+  },
+});
+
 new Vue({
-  router: new VueRouter({
-    routes: [
-      { path: "/", component: Dashboard },
-      { path: "/soluction", component: Soluction },
-      { path: "/support", component: Support },
-      { path: "/history", component: History },
-      { path: "/project", component: Project },
-      { path: "/board", component: Board },
-    ],
-  }),
+  data() {
+    return {};
+  },
+  router,
   el: "#app",
   components: { "aside-view": Aside },
 }).$mount("#app");

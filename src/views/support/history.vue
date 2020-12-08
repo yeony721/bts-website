@@ -59,152 +59,25 @@
             <div class="tab-content">
               <div id="tabContact" class="tab-pane fade active show">
                 <div class="pd-y-20 pd-x-10 contact-list">
-                  <div class="media active">
-                    <div class="avatar avatar-sm avatar-online">
-                      <span class="avatar-initial rounded-circle bg-gray-700"
-                        >A</span
-                      >
-                    </div>
-                    <div class="media-body mg-l-10">
-                      <h6 class="tx-13 mg-b-3">관세청</h6>
-                      <span class="tx-12">2020.11.09</span>
-                    </div>
-                    <!-- media-body -->
-                    <nav>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-star"
-                        >
-                          <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                          ></polygon></svg
-                      ></a>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-edit-2"
-                        >
-                          <polygon
-                            points="16 3 21 8 8 21 3 21 3 16 16 3"
-                          ></polygon></svg
-                      ></a>
-                    </nav>
-                  </div>
                   <!-- media -->
-
-                  <div class="media">
+                  <div
+                    class="media"
+                    v-for="(item, i) in siteInfoList"
+                    v-bind:key="i"
+                  >
                     <div class="avatar avatar-sm avatar-online">
-                      <span class="avatar-initial rounded-circle bg-primary"
-                        >a</span
-                      >
+                      <span class="avatar-initial rounded-circle bg-gray-700">{{
+                        item.siteNm.charAt(0)
+                      }}</span>
                     </div>
                     <div class="media-body mg-l-10">
-                      <h6 class="tx-13 mg-b-3">지역난방공사</h6>
-                      <span class="tx-12">2020.10.02</span>
+                      <h6 class="tx-13 mg-b-3">{{ item.siteNm }}</h6>
+                      <span class="tx-12">+1-234-567-890</span>
                     </div>
                     <!-- media-body -->
                     <nav>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-star"
-                        >
-                          <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                          ></polygon></svg
-                      ></a>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-edit-2"
-                        >
-                          <polygon
-                            points="16 3 21 8 8 21 3 21 3 16 16 3"
-                          ></polygon></svg
-                      ></a>
-                    </nav>
-                  </div>
-                  <!-- media -->
-
-                  <div class="media">
-                    <div class="avatar avatar-sm avatar-online">
-                      <span class="avatar-initial rounded-circle bg-gray-700"
-                        >E</span
-                      >
-                    </div>
-                    <div class="media-body mg-l-10">
-                      <h6 class="tx-13 mg-b-3">방사청</h6>
-                      <span class="tx-12">2020.09.03</span>
-                    </div>
-                    <!-- media-body -->
-                    <nav>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-star"
-                        >
-                          <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                          ></polygon></svg
-                      ></a>
-                      <a href=""
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-edit-2"
-                        >
-                          <polygon
-                            points="16 3 21 8 8 21 3 21 3 16 16 3"
-                          ></polygon></svg
-                      ></a>
+                      <a href=""><i data-feather="star"></i></a>
+                      <a href=""><i data-feather="edit-2"></i></a>
                     </nav>
                   </div>
                   <!-- media -->
@@ -280,7 +153,12 @@
                 <div class="timeline-item">
                   <div class="timeline-time">2020.11.09</div>
                   <div class="timeline-body">
-                    <h6 class="mg-b-0">3.4.1 패치 완료</h6>
+                    <a href="#offCanvas3" class="off-canvas-menu">
+                      <h6 class="mg-b-0">
+                        <span class="badge badge-success">신규설치</span>3.4.1
+                        패치 완료
+                      </h6></a
+                    >
                     <p>패치완료후 정상 동작 확인</p>
                     <p><a href="">서영무</a></p>
                   </div>
@@ -290,7 +168,10 @@
                 <div class="timeline-item">
                   <div class="timeline-time">2020.10.11</div>
                   <div class="timeline-body">
-                    <h6 class="mg-b-0">최초설치완료</h6>
+                    <h6 class="mg-b-0">
+                      <span class="badge badge-warning">장애대응</span>
+                      최초설치완료
+                    </h6>
                     <p>설치를 완료</p>
                     <p><a href="">서영무</a></p>
                   </div>
@@ -303,10 +184,67 @@
       </div>
       <!-- container -->
     </div>
+
+    <div
+      id="offCanvas3"
+      class="off-canvas off-canvas-overlay off-canvas-right wd-600"
+    >
+      <a href="#" class="close"><i data-feather="x"></i></a>
+
+      <div class="pd-25 ht-100p tx-13">
+        <h6 class="tx-inverse mg-t-50 mg-b-25">What does royalty free mean?</h6>
+        <p class="mg-b-25">
+          Royalty free means you just need to pay for rights to use the item
+          once per end product. You don't need to pay additional or ongoing fees
+          for each person who sees or uses it.
+        </p>
+        <a href="" class="btn btn-primary btn-block">Learn More</a>
+      </div>
+    </div>
+    <!-- off-canvas -->
   </div>
 </template>
+
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      siteInfoList: Array,
+    };
+  },
+  mounted() {
+    this.$http
+      .get("/src/assets/data/baseinfo/customer/list.json")
+      .then((response) => {
+        this.siteInfoList = response.data;
+      });
+
+    $(".off-canvas-menu").on("click", function(e) {
+      e.preventDefault();
+      var target = $(this).attr("href");
+      $(target).addClass("show");
+    });
+
+    $(".off-canvas .close").on("click", function(e) {
+      e.preventDefault();
+      $(this)
+        .closest(".off-canvas")
+        .removeClass("show");
+    });
+
+    $(document).on("click touchstart", function(e) {
+      e.stopPropagation();
+
+      // closing of sidebar menu when clicking outside of it
+      if (!$(e.target).closest(".off-canvas-menu").length) {
+        var offCanvas = $(e.target).closest(".off-canvas").length;
+        if (!offCanvas) {
+          $(".off-canvas.show").removeClass("show");
+        }
+      }
+    });
+  },
+};
 </script>
 
 <style>

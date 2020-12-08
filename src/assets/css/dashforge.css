@@ -12709,6 +12709,7 @@ textarea.parsley-success:focus {
         transition: none; } }
   .nav-aside .nav-item {
     position: relative; }
+    /*
     .nav-aside .nav-item.active .nav-link {
       opacity: 1;
       color: #0168fa;
@@ -12720,6 +12721,7 @@ textarea.parsley-success:focus {
     .nav-aside .nav-item.active svg {
       color: #0168fa;
       fill: rgba(1, 104, 250, 0.2); }
+      */
     .nav-aside .nav-item + .nav-item {
       margin-top: 1px; }
     .nav-aside .nav-item ul {

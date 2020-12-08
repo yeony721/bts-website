@@ -1,9 +1,9 @@
 // sample calendar events data
 
-'use strict'
+import moment from "moment";
 
-var curYear = moment().format('YYYY');
-var curMonth = moment().format('MM');
+var curYear = moment.format('YYYY');
+var curMonth = moment.format('MM');
 
 // Calendar Event Source
 var calendarEvents = {
