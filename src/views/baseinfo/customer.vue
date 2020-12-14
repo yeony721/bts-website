@@ -10,7 +10,7 @@
           <button
             data-toggle="modal"
             data-target="#modalEditContact"
-            v-on:click="newInfo()"
+            v-on:click="newSiteInfo()"
             class="btn btn-sm pd-x-15 btn-primary btn-uppercase mg-l-5"
           >
             <i data-feather="file" class="wd-10 mg-r-5"></i> 솔루션등록
@@ -19,183 +19,162 @@
       </template>
     </Header>
     <!-- content-header -->
-
     <div class="content-body">
       <div class="container pd-x-0">
-        <div class="contact-sidebar">
-          <div class="contact-sidebar-header">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-search"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <div class="search-form">
-              <input
-                type="search"
-                class="form-control"
-                placeholder="고객사명을 입력하세요"
-              />
-            </div>
-            <!--
-              <a href="#modalNewContact" class="btn btn-xs btn-icon btn-primary" data-toggle="modal">
-                <span data-toggle="tooltip" title="" data-original-title="Add New Contact"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></span>
-              </a>
-              -->
-            <!-- contact-add -->
-          </div>
-          <!-- contact-sidebar-header -->
-          <div class="contact-sidebar-body ps ps--active-y">
-            <div class="tab-content">
-              <div id="tabContact" class="tab-pane fade active show">
-                <div class="pd-y-20 pd-x-10 contact-list">
-                  <!-- media -->
-                  <div
-                    class="media"
-                    v-for="(item, i) in siteInfoList"
-                    v-bind:key="i"
-                  >
-                    <div class="avatar avatar-sm avatar-online">
-                      <span class="avatar-initial rounded-circle bg-gray-700">{{
-                        item.siteNm.charAt(0)
-                      }}</span>
-                    </div>
-                    <div class="media-body mg-l-10">
-                      <h6 class="tx-13 mg-b-3">{{ item.siteNm }}</h6>
-                      <span class="tx-12">+1-234-567-890</span>
-                    </div>
-                    <!-- media-body -->
-                    <nav>
-                      <a href=""><i data-feather="star"></i></a>
-                      <a href=""><i data-feather="edit-2"></i></a>
-                    </nav>
-                  </div>
-                  <!-- media -->
-                </div>
-                <!-- contact-list -->
-              </div>
-              <!-- tab-pane -->
-            </div>
-            <!-- tab-content -->
-          </div>
-          <!-- contact-sidebar-body -->
-        </div>
-        <div class="contact-content">
+        <Sitelist
+          v-bind:siteInfoList="siteInfoList"
+          v-bind:currentSiteIdx="currentSiteIdx"
+          @update-idx="updateIdx"
+        >
+        </Sitelist>
+        <div
+          v-if="clicklistinfo === false"
+          id="customerdetail"
+          class="contact-content"
+        >
           <div class="contact-content-body">
-            <div id="contactInformation" class="tab-pane show active pd-20 pd-xl-25">
-              <div class="d-flex align-items-center justify-content-between mg-b-25">
-                <h6 class="mg-b-0">Personal Details</h6>
+            <div
+              id="contactInformation"
+              class="tab-pane show active pd-20 pd-xl-25"
+              style="position: absolute; top: 40%; left: 50%; transform: translateX(-50%);"
+            >
+              목록을 선택해주세요.
+            </div>
+          </div>
+        </div>
+        <div v-if="clicklistinfo" class="contact-content">
+          <div class="contact-content-body">
+            <div
+              id="contactInformation"
+              class="tab-pane show active pd-20 pd-xl-25"
+            >
+              <div
+                class="d-flex align-items-center justify-content-between mg-b-25"
+              >
+                <h6 class="mg-b-0 tx-primary">
+                  {{ siteInfoList[currentSiteIdx].siteNm }}
+                </h6>
                 <div class="d-flex">
-                  <a href="#modalEditContact" data-toggle="modal" class="btn btn-sm btn-white d-flex align-items-center mg-r-5"><i data-feather="edit-2"></i><span class="d-none d-sm-inline mg-l-5"> Edit</span></a>
-                  <a href="#modalDeleteContact" data-toggle="modal" class="btn btn-sm btn-white d-flex align-items-center"><i data-feather="trash"></i><span class="d-none d-sm-inline mg-l-5"> Delete</span></a>
+                  <a
+                    href="#modalEditContact"
+                    data-toggle="modal"
+                    class="btn btn-sm btn-white d-flex align-items-center mg-r-5"
+                    v-on:click="updateSite(currentSiteIdx)"
+                    ><i data-feather="edit-2"></i
+                    ><span class="d-none d-sm-inline mg-l-5"> Edit</span></a
+                  >
+                  <a
+                    href="#modalDeleteContact"
+                    data-toggle="modal"
+                    class="btn btn-sm btn-white d-flex align-items-center"
+                    ><i data-feather="trash"></i
+                    ><span class="d-none d-sm-inline mg-l-5"> Delete</span></a
+                  >
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-6 col-sm">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Firstname</label>
-                  <p class="mg-b-0">Abigail</p>
-                </div><!-- col -->
+                  <label
+                    class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10"
+                    >고객사 유형</label
+                  >
+                  <p class="mg-b-0">
+                    {{ siteInfoList[currentSiteIdx].siteType }}
+                  </p>
+                </div>
+                <!-- col -->
                 <div class="col-6 col-sm">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Middlename</label>
-                  <p class="mg-b-0">Christensen</p>
-                </div><!-- col -->
-                <div class="col-sm mg-t-20 mg-sm-t-0">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Lastname</label>
-                  <p class="mg-b-0">Johnson</p>
-                </div><!-- col -->
-              </div><!-- row -->
-
-              <h6 class="mg-t-40 mg-b-20">Contact Details</h6>
-
+                  <label
+                    class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10"
+                    >현재지원여부</label
+                  >
+                  <p class="mg-b-0">
+                    {{ siteInfoList[currentSiteIdx].supportYn ? "Y" : "N" }}
+                  </p>
+                </div>
+                <!-- col -->
+              </div>
+              <!-- row -->
+              <h6 class="mg-t-40 mg-b-20">고객사 상세정보</h6>
               <div class="row row-sm">
-                <div class="col-6 col-sm-4">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Mobile Phone</label>
-                  <p class="tx-primary tx-rubik mg-b-0">+1 290 912 3868</p>
-                </div>
-                <div class="col-6 col-sm-4">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Home Phone</label>
-                  <p class="tx-primary tx-rubik mg-b-0">+1 011 342 3129</p>
-                </div>
-                <div class="col-6 col-sm-4 mg-t-20 mg-sm-t-0">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Work Phone</label>
-                  <p class="tx-primary tx-rubik mg-b-0">+1 100 003 3344</p>
-                </div>
-                <div class="col-sm-4 mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Email Address</label>
-                  <p class="tx-primary mg-b-0">me@themepixels.me</p>
-                </div>
-                <div class="col-sm-4 mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Company</label>
-                  <p class="mg-b-0">ThemePixels, Inc.</p>
-                </div>
-                <div class="col-sm-4 mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Job Position</label>
-                  <p class="mg-b-0">President &amp; CEO</p>
-                </div>
                 <div class="col-sm-6 mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Home Address</label>
-                  <p class="mg-b-0">4658 Kenwood Place<br>Pompano Beach, FL 33060, United States</p>
+                  <label
+                    class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10"
+                    >도입솔루션</label
+                  >
+                  <p class="mg-b-0">
+                    {{ siteInfoList[currentSiteIdx].sdqUseYn ? "SDQ" : "" }}
+                    {{ siteInfoList[currentSiteIdx].sdq4UseYn ? "SDQ4" : "" }}
+                    {{ siteInfoList[currentSiteIdx].smetaUseYn ? "SMETA" : "" }}
+                    {{ siteInfoList[currentSiteIdx].sflowUseYn ? "SFLOW" : "" }}
+                  </p>
                 </div>
-                <div class="col-sm-6 mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Work Address</label>
-                  <p class="mg-b-0">819 Waldeck Street<br>Farmers Branch, TX 75244, United States</p>
-                </div>
-                <div class="col-sm-6 mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Personal Website</label>
-                  <p class="tx-primary mg-b-0">http://themepixels.me/</p>
-                </div>
-                <div class="col-sm-6 mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Social Profiles</label>
-                  <nav class="nav nav-social">
-                    <a href="" class="nav-link"><i data-feather="facebook"></i></a>
-                    <a href="" class="nav-link"><i data-feather="twitter"></i></a>
-                    <a href="" class="nav-link"><i data-feather="instagram"></i></a>
-                    <a href="" class="nav-link"><i data-feather="github"></i></a>
-                  </nav>
-                </div><!-- col -->
                 <div class="col-sm mg-t-20 mg-sm-t-30">
-                  <label class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10">Notes</label>
-                  <p class="tx-13 mg-b-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                  <label
+                    class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10"
+                    >홈페이지</label
+                  >
+                  <p class="tx-13 mg-b-0">
+                    {{ siteInfoList[currentSiteIdx].siteAddr }}
+                  </p>
+                </div>
+                <div class="col-sm-6 mg-t-20 mg-sm-t-30">
+                  <label
+                    class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10"
+                    >고객사 위치</label
+                  >
+                  <p class="mg-b-0">
+                    {{ siteInfoList[currentSiteIdx].siteLoc }}
+                  </p>
+                </div>
+                <div class="col-sm mg-t-20 mg-sm-t-30">
+                  <label
+                    class="tx-10 tx-medium tx-spacing-1 tx-color-03 tx-uppercase tx-sans mg-b-10"
+                    >고객사 설명</label
+                  >
+                  <p class="tx-13 mg-b-0">
+                    {{ siteInfoList[currentSiteIdx].siteDesc }}
+                  </p>
                 </div>
 
-                <div data-label="Example" class="df-example">
-          <div id="map2"  style="width: 300px; height: 300px;"></div>
-        </div>
-              </div><!-- row -->
+                <!-- <div data-label="Example" class="df-example">
+                  <div id="map2" style="width: 300px; height: 300px;"></div>
+                </div> -->
+              </div>
+              <!-- row -->
             </div>
-        </div>
+          </div>
         </div>
       </div>
       <!-- container -->
     </div>
-    <Modal v-if="isModalShow" @update="createInfo">
+    <Modal v-if="isModalShow" @update="createSiteInfo">
       <!-- col -->
       <template v-sloat>
         <h6 class="mg-b-10">고객사명</h6>
         <div class="form-group mg-b-10">
           <input type="text" class="form-control" v-model="detailInfo.siteNm" />
         </div>
-
         <h6 class="mg-t-20 mg-b-10">고객사 유형</h6>
         <div class="form-group mg-b-10">
-          <input
-            type="text"
-            class="form-control"
-            v-model="detailInfo.siteType"
-          />
+          <select v-model="detailInfo.siteType" class="form-control">
+            <option value="공공">공공</option>
+            <option value="민간">민간</option>
+          </select>
         </div>
-
-        <h6 class="mg-t-20 mg-b-10">고객사 주소</h6>
+        <h6 class="mg-t-20 mg-b-10">도입 솔루션</h6>
+        <div class="form-group mg-b-10">
+          <input type="checkbox" v-model="detailInfo.sdqUseYn" />
+          <label for="SDQ">SDQ</label>
+          <input type="checkbox" v-model="detailInfo.sdq4UseYn" />
+          <label for="SDQ4">SDQ4</label>
+          <input type="checkbox" v-model="detailInfo.smetaUseYn" />
+          <label for="SMETA">SMETA</label>
+          <input type="checkbox" v-model="detailInfo.sflowUseYn" />
+          <label for="SFLOW">SFLOW</label>
+        </div>
+        <h6 class="mg-t-20 mg-b-10">홈페이지</h6>
         <div class="form-group mg-b-10">
           <input
             type="text"
@@ -203,7 +182,6 @@
             v-model="detailInfo.siteAddr"
           />
         </div>
-
         <h6 class="mg-t-20 mg-b-10">고객사 위치</h6>
         <div class="form-group mg-b-10">
           <input
@@ -222,13 +200,37 @@
       </template>
       <!-- col -->
     </Modal>
+
+    <!-- 삭제 모달 출력-->
+    <DelModal id="modalDeleteContact" @update="deleteSiteInfo">
+      <template v-slot:modal-title>
+        <h6 class="modal-title">고객사 정보 삭제</h6>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+      </template>
+       <template v-slot:modal-body>
+        <p class="mg-b-0">
+              고객사 정보를 삭제 하시겠습니까? <br>연결되어 있는 프로젝트 및
+              기술지원 정보에 영향이 발생하게 됩니다.
+            </p>
+      </template>
+    </DelModal>
   </div>
 </template>
 <script>
-import * as _ from "lodash";
 import qs from "qs";
 import Modal from "@/components/modal.vue";
 import Header from "@/components/header.vue";
+import Sitelist from "@/components/sitelist.vue";
+import Toast from "@/utils/toast.js";
+import MixinModal from "@/utils/mixin.js"
+import DelModal from "@/components/deletemodal.vue";
 
 const PAGEINFOS = {
   PAGENAME: "고객사정보관리",
@@ -236,7 +238,8 @@ const PAGEINFOS = {
 };
 
 export default {
-  components: { Header, Modal },
+  mixins: [MixinModal],
+  components: { Header, Modal, Sitelist, DelModal },
   data() {
     return {
       detailInfo: Object,
@@ -244,56 +247,79 @@ export default {
       viewTitle: PAGEINFOS.PAGENAME,
       activeCrumb: PAGEINFOS.PAGENAME,
       crumb: PAGEINFOS.CRUMB,
-      isModalShow: false,
+      currentSiteIdx: '0',
     };
   },
   methods: {
-    newInfo() {
-      this.isModalShow = true;
+    newSiteInfo() {
+      this.detailInfo = {};
+      this.detailInfo.siteType = "공공";
+      this.showModal();
     },
-    createInfo() {
-      this.$http
-        .post("/site", qs.stringify(qs.parse(this.detailInfo)))
-        .then((response) => {
-          $("#modalEditContact").modal("hide");
-          this.isModalShow = false;
-          this.siteInfoList.push(response.data);
-        });
+    createSiteInfo() {
+      if (this.detailInfo.siteId !== undefined) {
+        this.$set(this.siteInfoList, this.currentSiteIdx, this.detailInfo);
+        $("#modalEditContact").modal("hide");
+        this.closeModal();
+        /* let siteId = this.siteInfoList[this.currentSiteIdx].siteId;
+        this.$http
+          .put(
+            "/site" + siteId,
+            qs.stringify(qs.parse(this.detailInfo))
+          )
+          .then((response) => {
+            $("#modalEditContact").modal("hide");
+            this.isModalShow = false;
+            this.siteInfoList[this.currentSiteIdx] = response.data;
+          }); */
+        this.$toast("고객사 정보가 수정되었습니다.");
+      } else {
+        this.siteInfoList.push(this.detailInfo);
+        $("#modalEditContact").modal("hide");
+        this.closeModal();
+        // this.$http
+        //   .post("/site", qs.stringify(qs.parse(this.detailInfo)))
+        //   .then((response) => {
+        //     $("#modalEditContact").modal("hide");
+        //     this.isModalShow = false;
+        //     this.siteInfoList.push(response.data);
+        //   });
+        this.$toast("고객사 정보가 등록되었습니다.");
+      }
+    },
+    // 고객사 단건 정보 삭제
+    deleteSiteInfo() {
+      let siteId = this.siteInfoList[this.currentSiteIdx].siteId;
+      this.siteInfoList.splice(this.currentSiteIdx, 1);
+      $("#modalDeleteContact").modal("hide");
+      this.clicklistinfo = false;
+      //this.$http.delete("/site" + siteId).then((response) => {
+      //  this.siteInfoList.splice(this.currentSiteIdx, 1);
+      //  $("#modalDeleteContact").modal("hide");
+      //});
+
+      this.$toast("고객사 정보가 삭제되었습니다.");
+    },
+    updateSite(idx) {
+      this.showModal();
+      this.detailInfo = _.cloneDeep(this.siteInfoList[idx]);
+    },
+    updateIdx(idx) {
+      this.currentSiteIdx = idx;
+      this.clicklistinfo = true;
     },
   },
-   mounted() {
+  mounted() {
     // 솔루션 전체 목록조회
-    this.$http.get("/site").then((response) => {
+    this.$http.get("/baseinfo/site/list.json").then((response) => {
       this.siteInfoList = response.data;
+      this.clicklistinfo = true;
     });
-
-
-
-      $(function(){
-        'use strict';
-        var mapMarker = new GMaps({
-          el: '#map2',
-          lat: 37.7810822,
-          lng: -122.3871956,
-          zoom: 13.91
-        });
-
-        this.mapMarker.addMarker({
-          lat: 37.7810822,
-          lng: -122.3871956,
-          title: 'Themepixels',
-          click: function(e) {
-            alert('You clicked in this marker');
-          }
-        });
-
-      });
   },
 };
 </script>
-
 <style scoped>
-.contact-content-body{
+.contact-content-body {
   position: initial;
 }
 </style>

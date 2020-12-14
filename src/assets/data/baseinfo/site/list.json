@@ -1,0 +1,54 @@
+[
+    {
+      "siteId": "1",
+      "siteNm": "국방부1",
+      "siteType": "공공",
+      "siteLoc": "경기도 안양시 동안구 동편로20번길9 스마트넷빌딩4층",
+      "supportYn": true,
+      "sdqUseYn": true,
+      "sdq4UseYn": true,
+      "smetaUseYn": false,
+      "sflowUseYn": false,
+      "siteDesc": "클라우드 사용합니다. 설명 1 설명2",
+      "siteAddr": "https://www.naver.com/"
+    },
+    {
+      "siteId": "2",
+      "siteNm": "국방부2",
+      "siteType": "공공",
+      "siteLoc": "경기도 안양시 동안구 동편로20번길9 스마트넷빌딩3층",
+      "supportYn": true,
+      "sdqUseYn": true,
+      "sdq4UseYn": false,
+      "smetaUseYn": false,
+      "sflowUseYn": false,
+      "siteDesc": "설명2",
+      "siteAddr": "https://www.b2en.com/"
+    },
+    {
+      "siteId": "3",
+      "siteNm": "국방부3",
+      "siteType": "민간",
+      "siteLoc": "경기도 안양시 동안구 동편로20번길9 스마트넷빌딩2층",
+      "supportYn": false,
+      "sdqUseYn": true,
+      "sdq4UseYn": true,
+      "smetaUseYn": true,
+      "sflowUseYn": true,
+      "siteDesc": "설명3",
+      "siteAddr": "https://www.naver.com/"
+    },
+    {
+      "siteId": "4",
+      "siteNm": "비투엔",
+      "siteType": "민간",
+      "siteLoc": "경기도 안양시 동안구 동편로20번길9 스마트넷빌딩2층",
+      "supportYn": false,
+      "sdqUseYn": true,
+      "sdq4UseYn": true,
+      "smetaUseYn": true,
+      "sflowUseYn": true,
+      "siteDesc": "설명3",
+      "siteAddr": "https://www.naver.com/"
+    }
+  ]
