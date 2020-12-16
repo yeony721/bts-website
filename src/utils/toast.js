@@ -21,4 +21,3 @@ Vue.use(Toast, {
 });
 
 document.getElementsByClassName('top-center').item(0).style.top="45%";
-

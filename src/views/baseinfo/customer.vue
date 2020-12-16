@@ -149,9 +149,17 @@
       </div>
       <!-- container -->
     </div>
-    <Modal v-if="isModalShow" @update="createSiteInfo">
+    <Modal v-if="isModalShow" @update="createSiteInfo" >
       <!-- col -->
-      <template v-sloat>
+        <template v-slot:modal-title>
+          <h5 class="tx-18 tx-sm-20 mg-b-20">고객사 정보</h5>
+            <p class="tx-13 tx-color-03 mg-b-30">
+              고객사정보 수정페이지 설명
+              <span class="tx-color-02">고객사정보 수정페이지 설명</span>
+              고객사정보 수정페이지 설명
+            </p>
+      </template>
+      <template v-slot:modal-body>
         <h6 class="mg-b-10">고객사명</h6>
         <div class="form-group mg-b-10">
           <input type="text" class="form-control" v-model="detailInfo.siteNm" />
@@ -161,6 +169,13 @@
           <select v-model="detailInfo.siteType" class="form-control">
             <option value="공공">공공</option>
             <option value="민간">민간</option>
+          </select>
+        </div>
+        <h6 class="mg-t-20 mg-b-10">현재지원여부</h6>
+        <div class="form-group mg-b-10">
+          <select v-model="detailInfo.supportYn" class="form-control">
+            <option value="true">Y</option>
+            <option value="false">N</option>
           </select>
         </div>
         <h6 class="mg-t-20 mg-b-10">도입 솔루션</h6>
@@ -190,7 +205,6 @@
             v-model="detailInfo.siteLoc"
           />
         </div>
-
         <h6 class="mg-t-20 mg-b-10">고객사 설명</h6>
         <textarea
           class="form-control"
@@ -225,12 +239,12 @@
 </template>
 <script>
 import qs from "qs";
-import Modal from "@/components/modal.vue";
-import Header from "@/components/header.vue";
 import Sitelist from "@/components/sitelist.vue";
-import Toast from "@/utils/toast.js";
-import MixinModal from "@/utils/mixin.js"
+import Header from "@/components/header.vue";
+import Modal from "@/components/modal.vue";
 import DelModal from "@/components/deletemodal.vue";
+import MixinModal from "@/mixins/mixin.js";
+import Toast from "@/utils/toast.js";
 
 const PAGEINFOS = {
   PAGENAME: "고객사정보관리",
@@ -254,13 +268,14 @@ export default {
     newSiteInfo() {
       this.detailInfo = {};
       this.detailInfo.siteType = "공공";
+      this.detailInfo.supportYn = "false";
       this.showModal();
     },
     createSiteInfo() {
       if (this.detailInfo.siteId !== undefined) {
         this.$set(this.siteInfoList, this.currentSiteIdx, this.detailInfo);
-        $("#modalEditContact").modal("hide");
         this.closeModal();
+        this.$toast("고객사 정보가 수정되었습니다.");
         /* let siteId = this.siteInfoList[this.currentSiteIdx].siteId;
         this.$http
           .put(
@@ -272,11 +287,10 @@ export default {
             this.isModalShow = false;
             this.siteInfoList[this.currentSiteIdx] = response.data;
           }); */
-        this.$toast("고객사 정보가 수정되었습니다.");
       } else {
         this.siteInfoList.push(this.detailInfo);
-        $("#modalEditContact").modal("hide");
         this.closeModal();
+        this.$toast("고객사 정보가 등록되었습니다.");
         // this.$http
         //   .post("/site", qs.stringify(qs.parse(this.detailInfo)))
         //   .then((response) => {
@@ -284,7 +298,6 @@ export default {
         //     this.isModalShow = false;
         //     this.siteInfoList.push(response.data);
         //   });
-        this.$toast("고객사 정보가 등록되었습니다.");
       }
     },
     // 고객사 단건 정보 삭제
@@ -293,12 +306,11 @@ export default {
       this.siteInfoList.splice(this.currentSiteIdx, 1);
       $("#modalDeleteContact").modal("hide");
       this.clicklistinfo = false;
+      this.$toast("고객사 정보가 삭제되었습니다.");
       //this.$http.delete("/site" + siteId).then((response) => {
       //  this.siteInfoList.splice(this.currentSiteIdx, 1);
       //  $("#modalDeleteContact").modal("hide");
       //});
-
-      this.$toast("고객사 정보가 삭제되었습니다.");
     },
     updateSite(idx) {
       this.showModal();
