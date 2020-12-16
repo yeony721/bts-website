@@ -18,14 +18,7 @@
             >
               <span aria-hidden="true">&times;</span>
             </button>
-
-            <h5 class="tx-18 tx-sm-20 mg-b-20">솔루션정보</h5>
-            <p class="tx-13 tx-color-03 mg-b-30">
-              솔루션정보 수정페이지 설명
-              <span class="tx-color-02">솔루션정보 수정페이지 설명</span>
-              솔루션정보 수정페이지 설명
-            </p>
-
+            <slot name="modal-title"></slot> <!-- modal-header -->
             <div class="d-sm-flex">
               <div class="mg-sm-r-30">
                 <div class="pos-relative d-inline-block mg-b-20">
@@ -42,7 +35,7 @@
               </div>
               <!-- col -->
                 <div class="flex-fill">
-                <slot></slot>
+                <slot name="modal-body"></slot> <!-- modal-body -->
                 </div>
               <!-- col -->
             </div>
