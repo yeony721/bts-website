@@ -145,7 +145,10 @@
             ><i data-feather="shopping-bag"></i>
             <span>기술지원 분석</span></router-link
           >
-        <li class="nav-label mg-t-25">게시판&자료실</li>
+
+        <li class="nav-label mg-t-25"><router-link class="nav-link" to="/noticeboard"
+            >게시판&자료실</router-link></li>
+
       </ul>
     </div>
   </aside>

@@ -12,7 +12,12 @@ import SupportView from "@/views/baseinfo/support.vue";
 import HistoryView from "@/views/support/history.vue";
 import BoardView from "@/views/support/board.vue";
 import Calendar from "@/views/schedule/calendar.vue";
+import Noticeboard from "@/views/board/allcontents.vue";
+import Clickmenu from "@/views/board/clickmenu.vue";
+import Postcontent from "@/views/board/postcontent.vue";
+import Writepost from "@/views/board/writepost.vue";
 
+//axios.defaults.baseURL = "/src/assets/data";
 axios.defaults.baseURL = "http://127.0.0.1:18082";
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
@@ -31,6 +36,10 @@ const router = new VueRouter({
     { path: "/board", component: BoardView },
     { path: "/history", component: HistoryView },
     { path: "/calendar", component: Calendar },
+    { path: "/noticeboard", component: Noticeboard},
+    { path: "/noticeboard/clickmenu/:boardDivCd", component: Clickmenu },
+    { path: "/noticeboard/writepost/:boardDivCd?/:contentId?", component: Writepost },
+    { path: "/noticeboard/postcontent/:boardDivCd/:contentId", component: Postcontent}
   ],
   beforeRouteEnter(to, from, next) {
     let item = document.querySelectorAll(".nav-item");
